@@ -14,6 +14,8 @@ A lightweight WoW addon that shares live player, location and nearby NPC/player 
 
 The current TOC targets interface `120100`. Newer client versions may mark it out of date; compatibility with those versions needs testing. No automatic game installation or modification is performed.
 
+> **Experimental accessibility project.** WoW Context Bridge uses ordinary addon APIs and visible on-screen pixels to share context with external accessibility tools, such as voice-to-text utilities and potential screen-reader integrations. It does not read game memory, inject code, bypass client restrictions or automate gameplay. We have contacted Blizzard’s Accessibility team and are awaiting their response. The project is not officially approved by Blizzard, and its status under Blizzard’s policies remains unconfirmed.
+
 ## Commands
 
 - `/wcb status` or `/wcb diag`: current context and encoder diagnostics in game chat.
