@@ -3,7 +3,7 @@
 ## Addon smoke test
 
 1. Install only WoWContextBridge, removing the earlier CompanionPoC folder.
-2. Enter Retail and verify the top-left strip.
+2. Enter Retail (or Forever beta for unverified volunteer testing) and verify the top-left strip.
 3. Run `/wcb status`, `/wcb off` and `/wcb on`.
 4. Change target and zone; enable friendly/enemy nameplates and check nearby counts.
 5. Try Unicode names when available. Check for Lua errors after `/reload`.

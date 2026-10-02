@@ -2,12 +2,12 @@
 
 A lightweight WoW addon that shares live player, location and nearby NPC/player context with external apps through an on-screen pixel protocol, enabling contextual voice dictation and accessibility tools.
 
-**First experimental release: 0.1.0. WoW Retail only.** The addon is independent of Decktation, Whisper and Steam Deck. An external application needs a compatible screen reader to consume the context; installing the addon alone does not enable dictation.
+**Experimental release: 0.1.1. Retail tested; Forever beta compatibility untested.** The addon is independent of Decktation, Whisper and Steam Deck. An external application needs a compatible screen reader to consume the context; installing the addon alone does not enable dictation.
 
 ## Install manually
 
 1. Download the addon ZIP from [GitHub Releases](https://github.com/nukeador/wow-context-bridge/releases) and extract it, or copy `addon/WoWContextBridge` from this repository.
-2. Place the entire `WoWContextBridge` folder in your Retail installation's `_retail_/Interface/AddOns/` directory. `WoWContextBridge.toc` must be directly inside that folder.
+2. Place the entire `WoWContextBridge` folder in your client's `Interface/AddOns/` directory (`_retail_/Interface/AddOns/` for Retail; typically `_classic_beta_/Interface/AddOns/` for Forever beta). `WoWContextBridge.toc` must be directly inside that folder.
 3. Remove the earlier experimental `CompanionPoC` addon if installed, to prevent overlapping output.
 4. Restart WoW and enable **WoW Context Bridge** on the AddOns screen.
 5. Enter the world. A small colored strip should appear at the top-left.
@@ -75,10 +75,16 @@ Pushes to `main` and pull requests run offline tests and build an addon-only ZIP
 3. Create and push a matching tag, for example:
 
 ```sh
-git tag v0.1.0-experimental
-git push origin v0.1.0-experimental
+git tag v0.1.1-experimental
+git push origin v0.1.1-experimental
 ```
 
 The workflow checks that the tag matches the TOC version, tests the decoder, verifies the ZIP and publishes it as a release asset. Tags with a suffix are marked as prereleases. Testers should install the ZIP asset, not GitHub's automatic source-code archive. Experimental versions appear on the Releases page; GitHub's “latest stable release” may exclude prereleases. Every new version needs a new tag.
 
 For a local package: `python3 scripts/package_addon.py`.
+
+## Forever beta volunteer testing
+
+The package includes `WoWContextBridge_Camelot.toc` (interface `16001`) alongside the Retail manifest. Both load the same encoder and optical protocol. This follows the manifest convention used by [existing Forever addons](https://github.com/Pirson-s-Addons/HealthBarTextForever). API checks omit unavailable/restricted text, but this does not establish compatibility: Forever loading, unit/nameplate events, strip geometry and capture are untested.
+
+Install into the beta client's `Interface/AddOns/`, restart the client and check `/wcb status`, strip visibility and target/zone/nameplate changes. For Decktation, use a Companion integration build that recognises `WowB.exe`; earlier builds will wait for WoW. Report the beta build/interface and sanitized errors. No Classic compatibility is claimed.

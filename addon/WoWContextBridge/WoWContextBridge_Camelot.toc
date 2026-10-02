@@ -1,0 +1,6 @@
+## Interface: 16001
+## Title: WoW Context Bridge
+## Notes: Forever beta compatibility is untested. Shares live player, location and nearby NPC/player context with external apps through an on-screen pixel protocol.
+## Version: 0.1.1-experimental
+
+WoWContextBridge.lua

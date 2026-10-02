@@ -15,6 +15,11 @@ def build(output, tag=None):
     version = match.group(1)
     if tag is not None and tag != "v" + version:
         raise ValueError("Release tag must match the TOC version: v" + version)
+    forever = (addon / "WoWContextBridge_Camelot.toc").read_text()
+    if not re.search(r"^## Version:\s*" + re.escape(version) + r"\s*$", forever, re.MULTILINE):
+        raise ValueError("Retail and Forever manifest versions must match")
+    if "## Interface: 16001" not in forever or "WoWContextBridge.lua" not in forever:
+        raise ValueError("Invalid Forever manifest")
     destination = Path(output) / ("WoWContextBridge-" + version + ".zip")
     destination.parent.mkdir(parents=True, exist_ok=True)
     files = [(p, "WoWContextBridge/" + p.name) for p in sorted(addon.iterdir()) if p.is_file()]
@@ -30,6 +35,7 @@ def build(output, tag=None):
         assert archive.testzip() is None
         assert "WoWContextBridge/WoWContextBridge.toc" in archive.namelist()
         assert "WoWContextBridge/WoWContextBridge.lua" in archive.namelist()
+        assert "WoWContextBridge/WoWContextBridge_Camelot.toc" in archive.namelist()
     return destination
 
 if __name__ == "__main__":
