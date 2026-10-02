@@ -1,0 +1,6 @@
+## Interface: 120100
+## Title: WoW Context Bridge
+## Notes: Shares live player, location and nearby NPC/player context with external apps through an on-screen pixel protocol.
+## Version: 0.1.0-experimental
+
+WoWContextBridge.lua

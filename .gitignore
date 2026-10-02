@@ -1,0 +1,9 @@
+*.png
+*.py[cod]
+*.raw
+__pycache__/
+.venv/
+.DS_Store
+reader/native_pipewire_probe
+*.candidate
+release/
