@@ -56,5 +56,5 @@ jobs:
           if [[ "$RELEASE_TAG" == *-* ]]; then flags+=(--prerelease); fi
           gh release create "$RELEASE_TAG" release/*.zip \
             --verify-tag --title "WoW Context Bridge $RELEASE_TAG" \
-            --notes "Experimental WoW Retail addon. Extract the ZIP into _retail_/Interface/AddOns/ and enable WoW Context Bridge. Remove CompanionPoC if installed. See the repository README for compatibility, privacy and testing instructions." \
+            --notes "Experimental WoW context addon. Retail tested; Forever beta compatibility untested. Extract the ZIP into your client's Interface/AddOns/ and enable WoW Context Bridge. Remove CompanionPoC if installed. See the repository README for compatibility, privacy and testing instructions." \
             "${flags[@]}"
